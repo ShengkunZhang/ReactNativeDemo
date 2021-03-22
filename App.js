@@ -1,31 +1,20 @@
-import Readme from './app/Readme'
-import { Navigation } from "react-native-navigation";
+import { Navigation } from 'react-native-navigation';
+import { NavigationSet } from './app/NavigationSet'
 
-Readme.options = {
-  topBar: {
-    title: {
-      text: 'Home',
-      color: 'white'
-    },
-    background: {
-      color: '#4d089a'
-    }
-  }
-}
-Navigation.registerComponent('Readme', () => Readme);
+NavigationSet()
 
-Navigation.events().registerAppLaunchedListener(() => {
-   Navigation.setRoot({
-     root: {
-       stack: {
-          children: [
-            {
-              component: {
-                name: 'Readme'
-              }
+Navigation.events().registerAppLaunchedListener(async () => {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'Home'
             }
-          ]
-        }
+          }
+        ]
       }
-   });
+    }
+  });
 });
