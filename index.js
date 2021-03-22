@@ -2,23 +2,14 @@
  * @format
  */
 
-import { Navigation } from "react-native-navigation";
-import App from './App';
+import {YellowBox} from 'react-native';
+import './App';
 
-Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
+if (__DEV__) {
+  YellowBox.ignoreWarnings([
+      'Warning: componentWillReceiveProps',
 
-Navigation.events().registerAppLaunchedListener(() => {
-   Navigation.setRoot({
-     root: {
-       stack: {
-          children: [
-            {
-              component: {
-                name: 'com.myApp.WelcomeScreen'
-              }
-            }
-          ]
-        }
-      }
-   });
-});
+      // Hide warnings caused by React Native (https://github.com/facebook/react-native/issues/20841)
+      'Require cycle: node_modules/react-native/Libraries/Network/fetch.js',
+  ]);
+}
