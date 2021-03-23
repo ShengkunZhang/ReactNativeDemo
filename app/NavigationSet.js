@@ -41,3 +41,17 @@ export function NavigationSet () {
         }
     });
 }
+
+export const NavigationSetRoot = {
+    root: {
+        stack: {
+            children: [
+              {
+                component: {
+                  name: 'Home'
+                }
+              }
+            ]
+        }
+    }
+  }

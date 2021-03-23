@@ -1,20 +1,16 @@
 import { Navigation } from 'react-native-navigation';
-import { NavigationSet } from './app/NavigationSet'
+import { NavigationSet, NavigationSetRoot } from './app/NavigationSet'
+import { NavigationSetTab, NavigationSetTabRoot } from './app/NavigationSetTab'
 
-NavigationSet()
+var isTab = true
+if (isTab) {
+  // 底部栏导航
+  NavigationSetTab()
+} else {
+  // 普通导航
+  NavigationSet()
+}
 
 Navigation.events().registerAppLaunchedListener(async () => {
-  Navigation.setRoot({
-    root: {
-      stack: {
-        children: [
-          {
-            component: {
-              name: 'Home'
-            }
-          }
-        ]
-      }
-    }
-  });
+  Navigation.setRoot(isTab ? NavigationSetTabRoot : NavigationSetRoot);
 });

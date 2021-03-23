@@ -9,6 +9,11 @@ export default class Home extends PureComponent {
         Navigation.push(this.props.componentId, {
             component: {
               name: 'Readme',
+              options: {
+                bottomTabs: {
+                  visible: false
+                }
+              }
             }
         })
     };
