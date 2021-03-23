@@ -1,8 +1,8 @@
 import { Navigation } from 'react-native-navigation';
+import { isTab } from './app/Global'
 import { NavigationSet, NavigationSetRoot } from './app/NavigationSet'
 import { NavigationSetTab, NavigationSetTabRoot } from './app/NavigationSetTab'
 
-var isTab = true
 if (isTab) {
   // 底部栏导航
   NavigationSetTab()

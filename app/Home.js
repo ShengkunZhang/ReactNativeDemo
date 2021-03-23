@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
+import { isTab } from './Global'
 import { NavigationSet, NavigationSetRoot } from './NavigationSet'
 import { NavigationSetTab, NavigationSetTabRoot } from './NavigationSetTab'
 
@@ -63,10 +64,10 @@ export default class Home extends PureComponent {
                 title='Change to Tab Navigation'
                 color='#719ce0'
                 onPress={this.changeTabNav}/>
-              <Button
+              {!isTab && <Button
                 title='NO tab Push UUU Screen'
                 color='#710ce3'
-                onPress={this.pushUVC}/>
+                onPress={this.pushUVC}/>}
               <Button
                 title='Push Readme Screen'
                 color='#710ce3'
