@@ -13,13 +13,4 @@ if (isTab) {
 
 Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setRoot(isTab ? NavigationSetTabRoot : NavigationSetRoot);
-
-  // 监听界面的显示和隐藏事件
-  Navigation.events().registerComponentDidAppearListener(({componentId}) => {
-    console.log('DidAppear' , componentId);
-  });
-
-  Navigation.events().registerComponentDidDisappearListener(({componentId}) => {
-    console.log('DidDisappear' , componentId);
-  });
 });

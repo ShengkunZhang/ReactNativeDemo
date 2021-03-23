@@ -8,6 +8,27 @@ import { NavigationSetTab, NavigationSetTabRoot } from './NavigationSetTab'
 
 export default class Home extends PureComponent {
 
+    constructor(props) {
+      super(props)
+      
+      Navigation.events().registerBottomTabSelectedListener(({selectedTabIndex, unselectedTabIndex}) => {
+        console.log('selectedTabIndex' , selectedTabIndex);
+        console.log('unselectedTabIndex' , unselectedTabIndex);
+      });
+
+      Navigation.events().registerComponentDidAppearListener((ComponentDidAppearEvent) => {
+        if (props.componentId === ComponentDidAppearEvent.componentId) {
+          console.log('didAppear2' , ComponentDidAppearEvent);
+        }
+      });
+
+      Navigation.events().registerComponentDidDisappearListener(({componentName, componentType}) => {
+        if ('Home' === componentName) {
+          console.log('didDisappear4' , componentName, componentType);
+        }
+      });
+    }
+
     pushUVC = () => {
         console.log(this.props);
         const passProps = {
