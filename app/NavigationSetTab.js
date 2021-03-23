@@ -64,20 +64,25 @@ export function NavigationSetTab () {
 export const NavigationSetTabRoot = {
     root: {
         bottomTabs:{
+            id: 'BOTTOM_TABS_LAYOUT',
             children:[
                 {
                   stack: {
+                      id: 'HOME_TAB',
                       children: [{
                           component: {
-                              name: 'Home'
+                              id: 'HOME_SCREEN',
+                              name: 'Home',
                           }
                       }]
                   }
                 },{
                   stack: {
+                      id: 'READ_TAB',
                       children: [{
                           component: {
-                              name: 'Readme'
+                              id: 'READ_SCREEN',
+                              name: 'Readme',
                           }
                       }]
                   }

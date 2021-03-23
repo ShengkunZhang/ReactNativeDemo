@@ -10,7 +10,7 @@ export default class Home extends PureComponent {
 
     constructor(props) {
       super(props)
-      
+
       Navigation.events().registerBottomTabSelectedListener(({selectedTabIndex, unselectedTabIndex}) => {
         console.log('selectedTabIndex' , selectedTabIndex);
         console.log('unselectedTabIndex' , unselectedTabIndex);
@@ -73,10 +73,28 @@ export default class Home extends PureComponent {
         Navigation.setRoot(NavigationSetRoot);
     };
 
+    changeTab = () => {
+      // Navigation.mergeOptions(this.props.componentId, {
+      //   bottomTabs: {
+      //     currentTabIndex: 1,
+      //   },
+      // });
+
+      Navigation.mergeOptions(this.props.componentId, {
+        bottomTabs: {
+          currentTabId: 'READ_TAB'
+        }
+      });
+    };
+
     render () {
         return (
             <View style={styles.root}>
               <Text>Hello React Native Navigation 👋</Text>
+              <Button
+                title='Change Select Tab'
+                color='red'
+                onPress={this.changeTab}/>
               <Button
                 title='Change to Navigation'
                 color='#790ce9'
