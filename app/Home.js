@@ -7,7 +7,27 @@ import { NavigationSetTab, NavigationSetTabRoot } from './NavigationSetTab'
 
 export default class Home extends PureComponent {
 
-    pushOtherVC = () => {
+    pushUVC = () => {
+        console.log(this.props);
+        const passProps = {
+            name: 'John Doe',
+            status: 'online'
+          }
+        Navigation.push(this.props.componentId, {
+            component: {
+              name: 'UPS',
+              id: '123456',
+              passProps,
+              options: {
+                bottomTabs: {
+                  visible: false
+                }
+              }
+            }
+        })
+    }
+
+    pushRDVC = () => {
         console.log(this.props);
         Navigation.push(this.props.componentId, {
             component: {
@@ -44,9 +64,13 @@ export default class Home extends PureComponent {
                 color='#719ce0'
                 onPress={this.changeTabNav}/>
               <Button
+                title='NO tab Push UUU Screen'
+                color='#710ce3'
+                onPress={this.pushUVC}/>
+              <Button
                 title='Push Readme Screen'
                 color='#710ce3'
-                onPress={this.pushOtherVC}/>
+                onPress={this.pushRDVC}/>
             </View>
         );
     }
