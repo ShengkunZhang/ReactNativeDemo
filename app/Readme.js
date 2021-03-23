@@ -17,53 +17,78 @@ import {
   } from 'react-native/Libraries/NewAppScreen';
 
 class Readme extends PureComponent {
-    render() {
-        return (
-          <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView>
-              <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}>
-                <Header />
-                {global.HermesInternal == null ? null : (
-                  <View style={styles.engine}>
-                    <Text style={styles.footer}>Engine: Hermes</Text>
-                  </View>
-                )}
-                <View style={styles.body}>
-                  <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>Step One</Text>
-                    <Text style={styles.sectionDescription}>
-                      Edit <Text style={styles.highlight}>App.js</Text> to change this
-                      screen and then come back to see your edits.
-                    </Text>
-                  </View>
-                  <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>See Your Changes</Text>
-                    <Text style={styles.sectionDescription}>
-                      <ReloadInstructions />
-                    </Text>
-                  </View>
-                  <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>Debug</Text>
-                    <Text style={styles.sectionDescription}>
-                      <DebugInstructions />
-                    </Text>
-                  </View>
-                  <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>Learn More</Text>
-                    <Text style={styles.sectionDescription}>
-                      Read the docs to discover what to do next:
-                    </Text>
-                  </View>
-                  <LearnMoreLinks />
+
+  constructor(props) {
+    super(props);
+    console.log('constructor');
+  }
+
+  componentDidAppear() {
+    // 没有被调用
+    console.log('组件将要显示');
+  }
+
+  componentDidDisappear() {
+    // 没有被调用
+    console.log('组件将要消失');
+  }
+
+  componentDidMount() {
+    console.log('第一次将组件加到层次结构中时');
+  }
+
+  componentWillUnmount() {
+    console.log('将组件从层次结构中移除或者销毁时');
+  }
+
+  render() {
+    console.log('render');
+      return (
+        <>
+          <StatusBar barStyle="dark-content" />
+          <SafeAreaView>
+            <ScrollView
+              contentInsetAdjustmentBehavior="automatic"
+              style={styles.scrollView}>
+              <Header />
+              {global.HermesInternal == null ? null : (
+                <View style={styles.engine}>
+                  <Text style={styles.footer}>Engine: Hermes</Text>
                 </View>
-              </ScrollView>
-            </SafeAreaView>
-          </>
-        );
-    }
+              )}
+              <View style={styles.body}>
+                <View style={styles.sectionContainer}>
+                  <Text style={styles.sectionTitle}>Step One</Text>
+                  <Text style={styles.sectionDescription}>
+                    Edit <Text style={styles.highlight}>App.js</Text> to change this
+                    screen and then come back to see your edits.
+                  </Text>
+                </View>
+                <View style={styles.sectionContainer}>
+                  <Text style={styles.sectionTitle}>See Your Changes</Text>
+                  <Text style={styles.sectionDescription}>
+                    <ReloadInstructions />
+                  </Text>
+                </View>
+                <View style={styles.sectionContainer}>
+                  <Text style={styles.sectionTitle}>Debug</Text>
+                  <Text style={styles.sectionDescription}>
+                    <DebugInstructions />
+                  </Text>
+                </View>
+                <View style={styles.sectionContainer}>
+                  <Text style={styles.sectionTitle}>Learn More</Text>
+                  <Text style={styles.sectionDescription}>
+                    Read the docs to discover what to do next:
+                  </Text>
+                </View>
+                <LearnMoreLinks />
+              </View>
+            </ScrollView>
+          </SafeAreaView>
+        </>
+      );
+  }
 }
 
 const styles = StyleSheet.create({
