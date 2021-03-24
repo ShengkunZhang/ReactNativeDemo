@@ -2,9 +2,9 @@ import React, {PureComponent} from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import { isTab } from './Global'
-import { NavigationSet, NavigationSetRoot } from './NavigationSet'
-import { NavigationSetTab, NavigationSetTabRoot } from './NavigationSetTab'
+import { isTab } from '../Global'
+import { NavigationSet, NavigationSetRoot } from '../NavigationSet'
+import { NavigationSetTab, NavigationSetTabRoot } from '../NavigationSetTab'
 
 export default class Home extends PureComponent {
 
@@ -80,6 +80,7 @@ export default class Home extends PureComponent {
       //   },
       // });
 
+      console.log(this.props.componentId);
       Navigation.mergeOptions(this.props.componentId, {
         bottomTabs: {
           currentTabId: 'READ_TAB'

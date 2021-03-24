@@ -8,7 +8,7 @@ import {
     StatusBar,
   } from 'react-native';
   
-  import {
+import {
     Header,
     LearnMoreLinks,
     Colors,
@@ -20,7 +20,8 @@ class Readme extends PureComponent {
 
   constructor(props) {
     super(props);
-    console.log('constructor');
+    console.log(props);
+    console.log('Readme constructor', props.componentId);
   }
 
   componentDidAppear() {

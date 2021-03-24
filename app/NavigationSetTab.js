@@ -1,35 +1,76 @@
 import { Navigation } from 'react-native-navigation';
-import Readme from './Readme'
-import HomeScreen from './Home'
+import Readme from './screen/Readme'
+import UserProfileU from './screen/UserProfileU'
+import HomeScreen from './tab/Home'
+import UserScreen from './tab/User'
+import AboutScreen from './tab/About'
+
+var tabChildren = []
+
+function getNormalOption(title) {
+    var options = {
+        topBar: {
+            title: {
+                text: title
+            }
+        }
+    }
+    return options
+}
+
+function getOptions(title, text, icon) {
+    var options = {
+        topBar: {
+            title: {
+                text: title
+            }
+        },
+        bottomTab: {
+          text: text,
+          icon: icon,
+        }
+    }
+    return options
+}
+
+function getStack(stackID, childrenID, childrenName) {
+    var stacks = {
+        stack: {
+            id: stackID,
+            children: [{
+                component: {
+                    id: childrenID,
+                    name: childrenName,
+                }
+            }]
+        }
+      }
+    return stacks
+}
 
 export function NavigationSetTab () {
-    Readme.options = {
-        topBar: {
-            title: {
-                text: 'Readme'
-            }
-        },
-        bottomTab: {
-          text: '我',
-          icon: require('./bookmark.png'),
-        }
-    }
     
-    HomeScreen.options = {
-        topBar: {
-            title: {
-                text: 'Home'
-            }
-        },
-        bottomTab: {
-          text: '首页',
-          icon: require('./save.png'),
-        }
-    }
-    
-    // 注册组件
-    Navigation.registerComponent('Home', () => HomeScreen);
+    Readme.options = getNormalOption('ReadMe')
+    UserProfileU.options = getNormalOption('UPS')
+    // 注册普通组件
     Navigation.registerComponent('Readme', () => Readme);
+    Navigation.registerComponent('UPS', () => UserProfileU);
+
+    UserScreen.options = getOptions('User', '我', require('../assets/tab/user.png'))
+    HomeScreen.options = getOptions('Home', '首页', require('../assets/tab/home.png'))
+    AboutScreen.options = getOptions('About', '关于', require('../assets/tab/user.png'))
+    // 注册tab组件
+    Navigation.registerComponent('Home', () => HomeScreen);
+    Navigation.registerComponent('User', () => UserScreen);
+    Navigation.registerComponent('About', () => AboutScreen);
+
+    var home = getStack('HOME_TAB', 'HOME_SCREEN', 'Home')
+    var user = getStack('USER_TAB', 'USER_SCREEN', 'User')
+    var about = getStack('ABOUT_TAB', 'ABOUT_TAB_SCREEN', 'About')
+
+    tabChildren.push(home)
+    tabChildren.push(user)
+    tabChildren.push(about)
     
     // 导航栏默认主题
     Navigation.setDefaultOptions({
@@ -65,29 +106,7 @@ export const NavigationSetTabRoot = {
     root: {
         bottomTabs:{
             id: 'BOTTOM_TABS_LAYOUT',
-            children:[
-                {
-                  stack: {
-                      id: 'HOME_TAB',
-                      children: [{
-                          component: {
-                              id: 'HOME_SCREEN',
-                              name: 'Home',
-                          }
-                      }]
-                  }
-                },{
-                  stack: {
-                      id: 'READ_TAB',
-                      children: [{
-                          component: {
-                              id: 'READ_SCREEN',
-                              name: 'Readme',
-                          }
-                      }]
-                  }
-                }
-            ]
+            children: tabChildren,
         }
     }
   }

@@ -16,7 +16,7 @@ export default class UserProfileScreen extends React.Component {
     render () {
         return (
             <View style={styles.root}>
-              <Text>Hello UUU</Text>
+              <Text>Hello UserProfileScreen</Text>
             </View>
         );
     }

@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation';
-import Readme from './Readme'
-import HomeScreen from './Home'
-import UserProfileScreen from './UserProfileScreen'
+import Readme from './screen/Readme'
+import HomeScreen from './tab/Home'
+import UserProfileU from './screen/UserProfileU'
 
 export function NavigationSet () {
     Readme.options = {
@@ -21,7 +21,7 @@ export function NavigationSet () {
     }
 
     // // 如果这个界面标题是动态，则不能再这设置标题，否则就固定了
-    // UserProfileScreen.options = {
+    // UserProfileU.options = {
     //     topBar: {
     //         title: {
     //             text: 'UOP'
@@ -32,7 +32,7 @@ export function NavigationSet () {
     // 注册组件
     Navigation.registerComponent('Home', () => HomeScreen);
     Navigation.registerComponent('Readme', () => Readme);
-    Navigation.registerComponent('UPS', () => UserProfileScreen);
+    Navigation.registerComponent('UPS', () => UserProfileU);
     
     // 导航栏默认主题
     Navigation.setDefaultOptions({
