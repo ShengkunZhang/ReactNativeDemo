@@ -56,18 +56,19 @@ export function NavigationSetTab () {
     Navigation.registerComponent('Readme', () => Readme);
     Navigation.registerComponent('UPS', () => UserProfileU);
 
-    UserScreen.options = getOptions('User', '我', require('../assets/tab/user.png'))
     HomeScreen.options = getOptions('Home', '首页', require('../assets/tab/home.png'))
+    UserScreen.options = getOptions('User', '我', require('../assets/tab/user.png'))
     AboutScreen.options = getOptions('About', '关于', require('../assets/tab/user.png'))
     // 注册tab组件
     Navigation.registerComponent('Home', () => HomeScreen);
     Navigation.registerComponent('User', () => UserScreen);
     Navigation.registerComponent('About', () => AboutScreen);
 
+    // getStack(stackID, childrenID, childrenName)
     var home = getStack('HOME_TAB', 'HOME_SCREEN', 'Home')
     var user = getStack('USER_TAB', 'USER_SCREEN', 'User')
-    var about = getStack('ABOUT_TAB', 'ABOUT_TAB_SCREEN', 'About')
-
+    var about = getStack('ABOUT_TAB', 'ABOUT_SCREEN', 'About')
+    tabChildren.length = 0
     tabChildren.push(home)
     tabChildren.push(user)
     tabChildren.push(about)
@@ -105,7 +106,7 @@ export function NavigationSetTab () {
 export const NavigationSetTabRoot = {
     root: {
         bottomTabs:{
-            id: 'BOTTOM_TABS_LAYOUT',
+            id: 'BOTTOM_TABS_ID',
             children: tabChildren,
         }
     }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 export default class UserProfileScreen extends React.Component {
     // 解析传过来的参数作为标题
@@ -13,10 +14,28 @@ export default class UserProfileScreen extends React.Component {
       };
     }
 
+    changeTab = () => {
+      // Navigation.mergeOptions(this.props.componentId, {
+      //   bottomTabs: {
+      //     currentTabIndex: 0,
+      //   },
+      // });
+
+      Navigation.mergeOptions(this.props.componentId, {
+        bottomTabs: {
+          currentTabId: 'ABOUT_TAB'
+        }
+      });
+    };
+
     render () {
         return (
             <View style={styles.root}>
               <Text>Hello UserProfileScreen</Text>
+              <Button
+                title='Change Select Tab'
+                color='red'
+                onPress={this.changeTab}/>
             </View>
         );
     }
