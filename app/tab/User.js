@@ -14,10 +14,22 @@ export default class User extends React.Component {
       };
     }
 
+    constructor(props) {
+      super(props)
+      this.state = {
+        badgeCount: 1
+      }
+    }
+
     pushToUUU = () => {
+      const passProps = {
+        name: 'John DoeAD',
+        status: 'online'
+      }
       Navigation.push(this.props.componentId, {
           component: {
             name: 'UPS',
+            passProps,
             options: {
               bottomTabs: {
                 visible: false
@@ -27,10 +39,24 @@ export default class User extends React.Component {
       })
     };
 
+    addBageCount = () => {
+      this.setState({badgeCount: this.state.badgeCount + 1})
+      Navigation.mergeOptions(this.props.componentId, {
+        bottomTab: {
+          badge: String(this.state.badgeCount),
+          color: 'red',
+        },
+      });
+    }
+
     render () {
         return (
             <View style={styles.root}>
               <Text>Hello User</Text>
+              <Button
+                title='增加未读数'
+                color='red'
+                onPress={this.addBageCount}/>
               <Button
                 title='Push to UUU'
                 color='red'
