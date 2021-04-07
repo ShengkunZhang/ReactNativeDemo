@@ -4,6 +4,7 @@ import UserProfileU from './screen/UserProfileU'
 import HomeScreen from './tab/Home'
 import UserScreen from './tab/User'
 import AboutScreen from './tab/About'
+import SideMenu from './tab/SideMenu'
 
 var tabChildren = []
 
@@ -56,6 +57,9 @@ export function NavigationSetTab () {
     Navigation.registerComponent('Readme', () => Readme);
     Navigation.registerComponent('UPS', () => UserProfileU);
 
+    // 注册侧边栏组件
+    Navigation.registerComponent('SideMenu', () => SideMenu);
+
     HomeScreen.options = getOptions('Home', '首页', require('../assets/tab/home.png'))
     UserScreen.options = getOptions('User', '我', require('../assets/tab/user.png'))
     AboutScreen.options = getOptions('About', '关于', require('../assets/tab/user.png'))
@@ -99,15 +103,38 @@ export function NavigationSetTab () {
           selectedTextColor: 'red',
           iconColor: 'blue',
           selectedIconColor: 'red',
+        },
+        // 侧边栏
+        sideMenu: {
+            left: {
+              visible: false
+            }
         }
     });
 }
 
 export const NavigationSetTabRoot = {
     root: {
-        bottomTabs:{
-            id: 'BOTTOM_TABS_ID',
-            children: tabChildren,
+        sideMenu: {
+            id: 'SIDE_MENU_ID',
+            center: {
+                bottomTabs:{
+                    id: 'BOTTOM_TABS_ID',
+                    children: tabChildren,
+                }
+            },
+            left: {
+                component: {
+                    id:'SideMenuID_left',
+                    name: 'SideMenu',
+                },
+            },
+            right: {
+                component: {
+                    id:'SideMenuID_right',
+                    name: 'SideMenu',
+                },
+            }
         }
     }
   }
