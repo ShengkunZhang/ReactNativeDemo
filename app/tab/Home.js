@@ -35,7 +35,7 @@ export default class Home extends PureComponent {
         const passProps = {
             name: 'John Doe',
             status: 'online'
-          }
+        }
         Navigation.push(this.props.componentId, {
             component: {
               name: 'UPS',
@@ -115,15 +115,15 @@ export default class Home extends PureComponent {
             <View style={styles.root}>
               <Text>Hello React Native Navigation 👋</Text>
               {isShowTab && <Button
-                title='Change Select Tab'
+                title='改变选中的 Tab 页'
                 color='red'
                 onPress={this.changeTab}/>}
               {isShowTab && <Button
-                title='Change to Navigation'
+                title='改变为普通导航'
                 color='#790ce9'
                 onPress={this.changeNav}/>}
               {!isShowTab && <Button
-                title='Change to Tab Navigation'
+                title='改变为tab页导航'
                 color='#719ce0'
                 onPress={this.changeTabNav}/>}
               {!isShowTab && <Button

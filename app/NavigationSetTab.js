@@ -51,7 +51,7 @@ function getStack(stackID, childrenID, childrenName) {
 export function NavigationSetTab () {
     
     Readme.options = getNormalOption('ReadMe')
-    UserProfileU.options = getNormalOption('UPS')
+    // UserProfileU.options = getNormalOption('UPS')
     // 注册普通组件
     Navigation.registerComponent('Readme', () => Readme);
     Navigation.registerComponent('UPS', () => UserProfileU);

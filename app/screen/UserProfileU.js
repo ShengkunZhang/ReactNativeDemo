@@ -33,7 +33,7 @@ export default class UserProfileScreen extends React.Component {
             <View style={styles.root}>
               <Text>Hello UserProfileScreen</Text>
               <Button
-                title='Change Select Tab'
+                title='改变当前选中的底部tab'
                 color='red'
                 onPress={this.changeTab}/>
             </View>
