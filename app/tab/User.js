@@ -49,10 +49,28 @@ export default class User extends React.Component {
       });
     }
 
+    changeTitle = () => {
+      this.setState({badgeCount: this.state.badgeCount + 1})
+      var name = 'AAA'+ this.state.badgeCount
+      const options = {
+        topBar: {
+          title: {
+            text: name,
+            color: 'red',
+          },
+        },
+      };
+      Navigation.mergeOptions(this.props.componentId, options);
+    }
+
     render () {
         return (
             <View style={styles.root}>
               <Text>Hello User</Text>
+              <Button
+                title='动态改变标题'
+                color='red'
+                onPress={this.changeTitle}/>
               <Button
                 title='增加未读数'
                 color='red'
