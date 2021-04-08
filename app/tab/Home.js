@@ -9,25 +9,26 @@ import { NavigationSetTab, NavigationSetTabRoot } from '../NavigationSetTab'
 var isShowTab = isTab
 export default class Home extends PureComponent {
 
-    constructor(props) {
-      super(props)
-
-      Navigation.events().registerBottomTabSelectedListener(({selectedTabIndex, unselectedTabIndex}) => {
+    componentDidMount() {
+      this.tabSelectedListener = Navigation.events().registerBottomTabSelectedListener(({selectedTabIndex, unselectedTabIndex}) => {
         console.log('selectedTabIndex' , selectedTabIndex);
         console.log('unselectedTabIndex' , unselectedTabIndex);
       });
 
-      Navigation.events().registerComponentDidAppearListener((ComponentDidAppearEvent) => {
-        if (props.componentId === ComponentDidAppearEvent.componentId) {
-          console.log('didAppear2' , ComponentDidAppearEvent);
-        }
-      });
+      this.navigationEventListener = Navigation.events().bindComponent(this);
+    }
 
-      Navigation.events().registerComponentDidDisappearListener(({componentName, componentType}) => {
-        if ('Home' === componentName) {
-          console.log('didDisappear4' , componentName, componentType);
-        }
-      });
+    componentWillUnmount() {
+      this.tabSelectedListener.remove();
+      this.navigationEventListener.remove();
+    }
+
+    componentDidAppear() {
+      console.log('Home 显示了');
+    }
+
+    componentDidDisappear() {
+      console.log('Home 消失了');
     }
 
     pushUVC = () => {

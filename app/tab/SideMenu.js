@@ -6,14 +6,22 @@ import {  DeviceEventEmitter } from 'react-native';
 
 export default class SideMenu extends React.Component {
 
-    constructor(props) {
-      super(props)
-      Navigation.events().registerComponentDidDisappearListener(({componentName, componentType}) => {
-        if ('SideMenu' === componentName) {
-          // 左右使用的都是这个控件，所以注册了两次，会有两次回调
-          DeviceEventEmitter.emit(DeviceEvent.SideMenuDisappearEvent)
-        }
-      });
+    componentDidMount() {
+      // 左右使用的都是这个控件，所以componentDidMount执行了两次
+      this.navigationEventListener = Navigation.events().bindComponent(this);
+    }
+
+    componentWillUnmount() {
+      this.navigationEventListener.remove();
+    }
+
+    componentDidAppear() {
+      console.log('SideMenu 显示了');
+      DeviceEventEmitter.emit(DeviceEvent.SideMenuDisappearEvent)
+    }
+
+    componentDidDisappear() {
+      console.log('SideMenu 消失了');
     }
 
     render () {
