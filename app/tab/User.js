@@ -72,6 +72,20 @@ export default class User extends React.Component {
       });
     }
 
+    addBageDot = () => {
+      var options = {
+        bottomTab: {
+          dotIndicator: {
+            color: 'blue',
+            size: 30,
+            visible: true,
+            animate: true,
+          }
+        },
+      }
+      Navigation.mergeOptions(this.props.componentId, options);
+    }
+
     changeTitle = () => {
       this.setState({badgeCount: this.state.badgeCount + 1})
       var name = 'AAA'+ this.state.badgeCount
@@ -134,19 +148,23 @@ export default class User extends React.Component {
                 onPress={this.changeLeftVisible}/>
               <Button
                 title={`${rightText}右边侧边栏`}
-                color='red'
+                color='blue'
                 onPress={this.changeRightVisible}/>
               <Button
                 title='动态改变标题'
-                color='red'
+                color='purple'
                 onPress={this.changeTitle}/>
               <Button
+                title='增加蓝点提示'
+                color='blue'
+                onPress={this.addBageDot}/>
+              <Button
                 title='增加未读数'
-                color='red'
+                color='purple'
                 onPress={this.addBageCount}/>
               <Button
                 title='Push to UUU'
-                color='red'
+                color='gray'
                 onPress={this.pushToUUU}/>
             </View>
         );
