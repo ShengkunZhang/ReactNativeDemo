@@ -103,6 +103,14 @@ export function NavigationSetTab () {
           selectedTextColor: 'red',
           iconColor: 'blue',
           selectedIconColor: 'red',
+          ...Platform.select({ android: { iconWidth: 16, iconHeight: 16 } }),
+          ...Platform.select({ ios: {  iconInsets: {
+                    top: -2,
+                    bottom: -2,
+                    left: -2,
+                    right: -2,
+                }
+            }}),
         },
         // 侧边栏
         sideMenu: {
