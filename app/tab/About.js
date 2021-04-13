@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
 export default class About extends React.Component {
     // 解析传过来的参数作为标题
@@ -15,9 +16,17 @@ export default class About extends React.Component {
 
     render () {
         return (
-            <View style={styles.root}>
-              <Text>Hello About</Text>
-            </View>
+          <ScrollableTabView
+            style={{ marginTop: 0 }}
+            initialPage={0}
+            renderTabBar={() => <ScrollableTabBar />}
+          >
+            <Text tabLabel='全部'>My</Text>
+            <Text tabLabel='联系人'>favorite</Text>
+            <Text tabLabel='讨论组'>project</Text>
+            <Text tabLabel='频道'>favorite</Text>
+            <Text tabLabel='聊天记录'>project</Text>
+          </ScrollableTabView>
         );
     }
 }
