@@ -23,12 +23,12 @@ export default class Home extends PureComponent {
       this.navigationEventListener.remove();
     }
 
-    componentDidAppear() {
-      console.log('Home 显示了');
+    componentDidAppear(e) {
+      console.log('Home 显示了', e);
     }
 
-    componentDidDisappear() {
-      console.log('Home 消失了');
+    componentDidDisappear(e) {
+      console.log('Home 消失了', e);
     }
 
     pushUVC = () => {
