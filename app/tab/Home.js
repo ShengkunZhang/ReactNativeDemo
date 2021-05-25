@@ -57,7 +57,7 @@ export default class Home extends PureComponent {
             name: 'John Doe',
             status: 'online'
         }
-        Navigation.push(this.props.componentId, {
+        const options = {
             component: {
               name: 'UPS',
               id: '123456',
@@ -68,12 +68,13 @@ export default class Home extends PureComponent {
                 }
               }
             }
-        })
+        }
+        Navigation.push(this.props.componentId, options)
     }
 
     pushRDVC = () => {
         console.log(this.props);
-        Navigation.push(this.props.componentId, {
+        const options = {
             component: {
               name: 'Readme',
               options: {
@@ -87,7 +88,8 @@ export default class Home extends PureComponent {
                 }
               }
             }
-        })
+        }
+        Navigation.push(this.props.componentId, options)
     };
 
     changeTabNav = () => {

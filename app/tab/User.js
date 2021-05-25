@@ -43,7 +43,7 @@ export default class User extends React.Component {
         name: 'John DoeAD',
         status: 'online'
       }
-      Navigation.push(this.props.componentId, {
+      const options = {
           component: {
             name: 'UPS',
             passProps,
@@ -59,7 +59,8 @@ export default class User extends React.Component {
               },
             }
           }
-      })
+      }
+      Navigation.push(this.props.componentId, options)
     };
 
     addBageCount = () => {
