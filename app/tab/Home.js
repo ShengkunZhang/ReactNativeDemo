@@ -79,6 +79,11 @@ export default class Home extends PureComponent {
               options: {
                 bottomTabs: {
                   visible: false
+                },
+                topBar: {
+                  backButton: {
+                    title: '',
+                  }
                 }
               }
             }
