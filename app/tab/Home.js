@@ -16,7 +16,27 @@ export default class Home extends PureComponent {
       });
 
       this.navigationEventListener = Navigation.events().bindComponent(this);
+
+      // 显示顶部右键按钮
+      var options = {
+        topBar: {
+          rightButtons: [{
+              id: 'scanID',
+              text: '扫一扫',
+              color: 'red',
+              icon: require('../../assets/tab/home.png'),
+            },
+          ],
+        },
+      }
+      Navigation.mergeOptions(this.props.componentId, options);
     }
+
+    navigationButtonPressed({buttonId}) {
+      if (buttonId === 'scanID') {
+          console.log('扫一扫按钮');
+      }
+  }
 
     componentWillUnmount() {
       this.tabSelectedListener.remove();

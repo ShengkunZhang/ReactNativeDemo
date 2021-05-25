@@ -9,18 +9,17 @@ import SideMenu from './tab/SideMenu'
 var tabChildren = []
 
 function getNormalOption(title) {
-    var options = {
+    return {
         topBar: {
             title: {
                 text: title
             }
         }
     }
-    return options
 }
 
 function getOptions(title, text, icon) {
-    var options = {
+    return {
         topBar: {
             title: {
                 text: title
@@ -31,11 +30,10 @@ function getOptions(title, text, icon) {
           icon: icon,
         }
     }
-    return options
 }
 
 function getStack(stackID, childrenID, childrenName) {
-    var stacks = {
+    return {
         stack: {
             id: stackID,
             children: [{
@@ -45,8 +43,7 @@ function getStack(stackID, childrenID, childrenName) {
                 }
             }]
         }
-      }
-    return stacks
+    }
 }
 
 export function NavigationSetTab () {
